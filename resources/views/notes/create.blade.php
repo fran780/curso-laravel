@@ -1,8 +1,6 @@
-@extends('layouts.app') <!-- con el extends se hereda una plantilla principal que en este caso es la app.blade.php -->
+<x-layout>
 
-@section('title', 'Crear Nota')
-
-@section('content') <!-- con el section se define una seccion que en este caso es la seccion content que esta en la plantilla principal app.blade.php -->
+    <x-slot:title>Nueva nota</x-slot:title> <!-- con esto se define el contenido de la variable title que se usa en el componente layout para el titulo de la pagina -->
 
         <main class="content">
             <div class="cards">
@@ -23,5 +21,6 @@
                 </div>
             </div>
         </main>
+</x-layout>
 
-@endsection
+<!--En este archivo se esta usando el componente layout que es el que contiene la estructura principal de la aplicacion, y dentro del componente se define un espacio con slot que es donde se va a insertar el contenido de este archivo.-->

@@ -1,8 +1,7 @@
-@extends('layouts.app')
+<x-layout>
 
-@section('title', 'Listado de notas')
+    <x-slot name="title">Listado de notas</x-slot> <!-- con esto se define el contenido de la variable title que se usa en el componente layout para el titulo de la pagina -->
 
-@section('content')
         <main class="content">
             <div class="cards">
 
@@ -170,5 +169,4 @@
                 </div>
             </div>
         </main>
-
-@endsection
+</x-layout>
