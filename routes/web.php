@@ -7,24 +7,33 @@ Route::get('/home', function () {
 });
 
 Route::get('/notas', function () {
-    return view('notes.index'); // retorna la vista resources/views/notas/index.blade.php
+    $notes = [
+        'Primera nota',
+        'Segunda nota',
+        'Tercera nota',
+        'Cuarta nota',
+        'Quinta nota',
+        '<script>alert("Codigo malicioso")</script>' /*este es un ejemplo de inyeccion de codigo malicioso, es uno de los mayores riesgos si se decide usar php plano*/,
+    ];
+
+    return view('notes.index')->with('notes', $notes);
 });
 
 Route::get('/notas/{id}', function ($id) {
-    return 'Detalles de la nota: ' .$id;
+    return 'Detalles de la nota: ' . $id;
 })->whereNumber('id');
 
 Route::get('notas/crear/form', function () {
-    return view('notes.create'); 
-}); 
+    return view('notes.create');
+});
 
 Route::get('/notas/{id}/editar', function ($id) {
-    return 'Editar nota: ' .$id;
+    return 'Editar nota: ' . $id;
 });
 
 Route::get('cursos', function () {
     return [
-    'Cursos' =>
+        'Cursos' =>
         [
             'Curso de Laravel 10',
             'Curso de programacion orientada a objetos',
