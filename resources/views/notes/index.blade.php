@@ -18,7 +18,7 @@
                     </div>
 
                     <footer class="card-footer">
-                        <a class="action-link action-edit">
+                        <a href= {{route ('notes.edit',['id' => $loop->iteration]) }} class="action-link action-edit"> <!-- se usa el helper route para generar la url a partir del nombre de la ruta y se pasa el id como parametro usando el array asociativo, ademas se usa $loop->iteration para obtener el indice actual del ciclo empezando desde 1 -->
                             <i class="icon icon-pen"></i>
                         </a>
                         <a class="action-link action-delete">

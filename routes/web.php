@@ -6,7 +6,7 @@ Route::get('/home', function () {
     return 'Pagina de inicio';
 });
 
-Route::get('/notas', function () {
+Route::get('/notas/listado', function () {
     $notes = [
         'Primera nota',
         'Segunda nota',
@@ -17,27 +17,16 @@ Route::get('/notas', function () {
     ];
 
     return view('notes.index')->with('notes', $notes);
-});
+})->name('notes.index');
 
 Route::get('/notas/{id}', function ($id) {
     return 'Detalles de la nota: ' . $id;
-})->whereNumber('id');
+})->name('notes.view'); /*se usa whereNumber para que solo acepte numeros en el id y el name para llamar a esas rutas*/
 
 Route::get('notas/crear', function () {
     return view('notes.create');
-});
+})->name('notes.create');
 
 Route::get('/notas/{id}/editar', function ($id) {
     return 'Editar nota: ' . $id;
-});
-
-Route::get('cursos', function () {
-    return [
-        'Cursos' =>
-        [
-            'Curso de Laravel 10',
-            'Curso de programacion orientada a objetos',
-            'Curso de Git y Github'
-        ]
-    ];
-});
+})->name('notes.edit');
