@@ -7,15 +7,15 @@ Route::get('/home', function () {
 });
 
 Route::get('/notas', function () {
-    return 'Listado de notas';
+    return view('notes.index'); // retorna la vista resources/views/notas/index.blade.php
 });
 
 Route::get('/notas/{id}', function ($id) {
     return 'Detalles de la nota: ' .$id;
 })->whereNumber('id');
 
-Route::get('notas/crear', function () {
-    return 'Crear nueva nota';
+Route::get('notas/crear/form', function () {
+    return view('notes.create'); 
 }); 
 
 Route::get('/notas/{id}/editar', function ($id) {
