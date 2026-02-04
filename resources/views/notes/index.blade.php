@@ -30,13 +30,16 @@
         </header>
         <main class="content">
             <div class="cards">
+
+                @forelse($notes as $note)
                 <div class="card card-small">
                     <div class="card-body">
-                        <h4>¿Para qué sirve Composer?</h4>
+                        <h4> {{ $note }} </h4>  <!-- htmlentities sirve para evitar codigo malicioso -->
+
+                       {{ rand(1, 1000) }} 
 
                         <p>
-                            Con Composer podemos instalar y actualizar frameworks como Laravel o Symfony,
-                            así como componentes para generar PDF, procesar pagos con tarjetas, manipular imágenes y mucho más.
+                             {!! $note !!} <!-- con los !! se desactiva la proteccion contra codigo malicioso y se puede imprimir de manera forzada --> 
                         </p>
                     </div>
 
@@ -49,6 +52,46 @@
                         </a>
                     </footer>
                 </div>
+
+                @empty
+                    <p>No hay notas disponibles</p>
+
+              @endforelse
+
+              <!--el for else es una estructura de control que permite recorrer un arreglo y mostrar un mensaje en caso de que el arreglo este vacio-->
+
+              
+              <div class="cards">
+                <div class="card card-small">
+                    <div class="card-body">
+                        <h4>Aprendiendo Blade</h4>
+
+                        @verbatim <!--verbatim sirve para que imprima todo en texto plano -->
+
+                        <p>
+                         Para imprimir una variable con Blade se utilza esta sintaxis: <br>
+                         {{ $mi_variable }}
+                        </p>
+
+                        <p> Las directivas de Blade siempre empiezan con @, por ejemplo: </p>
+                        @foreach
+
+                        @endverbatim
+
+
+                    </div>
+                    <footer class="card-footer">
+                        <a class="action-link action-edit">
+                            <i class="icon icon-pen"></i>
+                        </a>
+                        <a class="action-link action-delete">
+                            <i class="icon icon-trash"></i>
+                        </a>
+                    </footer>
+                </div>
+
+
+
                 <div class="card">
                     <div class="card-body">
                         <h4>Instalación de Laravel</h4>
