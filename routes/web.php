@@ -23,7 +23,7 @@ Route::get('/notas/{id}', function ($id) {
     return 'Detalles de la nota: ' . $id;
 })->whereNumber('id');
 
-Route::get('notas/crear/form', function () {
+Route::get('notas/crear', function () {
     return view('notes.create');
 });
 
