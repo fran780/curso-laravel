@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title', 'App de Notas')</title>  <!-- con el yield se define un espacio que puede ser llenado por una seccion de otra plantilla que herede esta plantilla principal -->
+    <title>{{ $title ?? 'App de notas' }}</title>
     <link rel="stylesheet" type="text/css" href= "{{ asset('css/app.css') }}">  
     <!-- Ruta relativa al archivo CSS en caso de que falle, por eso se ponen los ../ en caso de que se agregue un tercer archivo a la ruta pues entonces solo deja con / o sea a partir del dominio -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,7 @@
             </nav>
         </header>
 
-        @yield('content')
+        {{ $slot }} <!-- con esto se define un espacio que puede ser llenado por el contenido de otra plantilla que use este componente de layout, imprime el contenido de la variable -->
 
         <footer class="foot">
             <div class="ad">
@@ -43,7 +43,7 @@
                 </p>
             </div>
             <div class="license">
-                <p>© 2019 Derechos Reservados - Styde Limited</p>
+                <p>© {{ $currentYear }} Derechos Reservados - Styde Limited</p> <!-- con date se imprime el año actual -->
             </div>
         </footer>
     </div>
