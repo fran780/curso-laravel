@@ -6,7 +6,7 @@ Route::get('/notes', function () {
     return 'Pagina de inicio';
 });
 
-Route::get('/notas', function () {
+Route::get('/notas/listado', function () {
     $notes = [
         'Primera nota',
         'Segunda nota',
