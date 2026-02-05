@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/home', function () {
+Route::get('/notes', function () {
     return 'Pagina de inicio';
 });
 
@@ -17,27 +17,17 @@ Route::get('/notas', function () {
     ];
 
     return view('notes.index')->with('notes', $notes);
-});
+})->name('notes.index');
+
+Route::get('/notas/crear', function () {
+    return view('notes.create');
+})->name('notes.create');                          /*cuando a veces de error y no llame a la ruta esperada ubicar en el orden correcto las rutas*/ 
 
 Route::get('/notas/{id}', function ($id) {
-    return 'Detalles de la nota: ' . $id;
-})->whereNumber('id');
-
-Route::get('notas/crear', function () {
-    return view('notes.create');
-});
+    return 'Detalles de la nota: ' .$id;
+})->name('notes.view'); 
 
 Route::get('/notas/{id}/editar', function ($id) {
-    return 'Editar nota: ' . $id;
-});
-
-Route::get('cursos', function () {
-    return [
-        'Cursos' =>
-        [
-            'Curso de Laravel 10',
-            'Curso de programacion orientada a objetos',
-            'Curso de Git y Github'
-        ]
-    ];
-});
+    return 'Editar nota: '.$id;
+})->name('notes.edit'); // sirve para nombrar la ruta y luego referenciarla en los enlaces
+//->where('id', '[0-9]+'); // expresion regular para que solo acepte numeros en el id
