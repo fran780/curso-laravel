@@ -2,14 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // Agregar esta línea para usar el facade DB
+use App\Models\Note;
 
 Route::get('/notes', function () {
     return 'Pagina de inicio';
 });
 
 Route::get('/notas', function () {
-    // Obtener todas las notas de la base de datos de las mas recientes a las mas antiguas
-    $notes = DB::table('notes')->latest()->get();
+    $notes = Note::query()
+        ->orderByDesc('id')
+        ->get();
+
 
     return view('notes.index')->with('notes', $notes);
 })->name('notes.index');
@@ -27,8 +30,7 @@ Route::get('/notas/{id}', function ($id) {
 })->name('notes.view');
 
 Route::get('/notas/{id}/editar', function ($id) {
-    $note = DB::table('notes')->find($id); //sirve para buscar una nota por su ID
-    abort_if($note === null, 404); //si la nota no existe, mostrar error 404 es mas conveniente que un error 500, ya que el error 404 indica que el recurso no se encontró, mientras que el error 500 indica un error interno del servidor.
+    $note = Note::findOrFail($id); //con esto me aseguro de obtener la nota o lanzar un error 404 evitando el uso de abort_if
     /*dd($note); //sirve para hacer debug y ver el contenido de la variable*/
     return 'Editar nota: ' .$note->title;
 })->name('notes.edit');
