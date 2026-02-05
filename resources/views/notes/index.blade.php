@@ -19,7 +19,7 @@
                     </div>
 
                     <footer class="card-footer">
-                        <a href="{{ route('notes.edit', ['id' => $loop->iteration]) }}" class="action-link action-edit">
+                        <a href="{{ $note->editUrl() }}" class="action-link action-edit">
                             <!-- con el helper url se genera la url completa a partir de la ruta dada -->
                             <i class="icon icon-pen"></i>
                         </a>
