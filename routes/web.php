@@ -21,3 +21,5 @@ Route::get('/notas/crear', [NoteController::class, 'create'])->name('notes.creat
 Route::get('/notas/{id}/editar', [NoteController::class, 'edit'])->name('notes.edit'); /*esta ruta es para mostrar el formulario de edición de una nota específica, se llama a el controlador NoteController y su método edit, pasando el id de la nota como parámetro*/
 
 Route::get('/notas/{id}', [NoteController::class, 'show'])->name('notes.view'); /*esta ruta es para mostrar los detalles de una nota específica, se llama a el controlador NoteController y su método show, pasando el id de la nota como parámetro*/
+
+Route::put('/notas/{id}', [NoteController::class, 'update'])->name('notes.update'); /* puede tener misma ruta pero con diferentes metodos*/
