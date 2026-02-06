@@ -16,6 +16,13 @@
                             {{-- {!! $note !!} --}}
                             <!-- con los !! se desactiva la proteccion contra codigo malicioso y se puede imprimir de manera forzada -->
                         </p>
+
+                        <form method="POST" action="{{ route('notes.destroy', $note) }}">
+                            @method('DELETE')
+                            @csrf
+                            <button>Eliminar</button>
+                        </form>
+
                     </div>
 
                     <footer class="card-footer">

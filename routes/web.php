@@ -23,3 +23,5 @@ Route::get('/notas/{id}/editar', [NoteController::class, 'edit'])->name('notes.e
 Route::get('/notas/{id}', [NoteController::class, 'show'])->name('notes.view'); /*esta ruta es para mostrar los detalles de una nota específica, se llama a el controlador NoteController y su método show, pasando el id de la nota como parámetro*/
 
 Route::put('/notas/{id}', [NoteController::class, 'update'])->name('notes.update'); /* puede tener misma ruta pero con diferentes metodos*/
+
+Route::delete('/notas/{id}', [NoteController::class, 'destroy'])->name('notes.destroy'); /*esta ruta es para eliminar una nota específica, se llama a el controlador NoteController y su método destroy, pasando el id de la nota como parámetro*/

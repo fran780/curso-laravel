@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Note;
+use Illuminate\Support\Facades\DB;
 
 class NoteController extends Controller //un controlador es una clase que se encarga de manejar las solicitudes HTTP relacionadas con un recurso, en este caso, las notas. 
 {
@@ -49,9 +50,27 @@ class NoteController extends Controller //un controlador es una clase que se enc
         return view('notes.edit', ['note' => $note]); //arreglo asociativo para pasar la nota a la vista 'notes.edit'
     }
 
-    public function update(Request $request, $id)
+     public function update($id, Request $request)
     {
-        dd("Updating: $id");
+        $note = Note::findOrFail($id);
+
+        $request->validate([
+            'title' => ['required', 'min:3', Rule::unique('notes')->ignore($note)],
+            'content' => 'required',
+        ]);
+
+        $note->update([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+        ]);
+
+        return to_route('notes.index');
+    }
+
+    public function destroy($id)
+    {
+       DB::table('notes')->delete($id); //esto es para eliminar una nota específica de la tabla 'notes' utilizando el constructor de consultas DB
+       return to_route('notes.index'); 
     }
 
 }
