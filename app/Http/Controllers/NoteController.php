@@ -46,6 +46,12 @@ class NoteController extends Controller //un controlador es una clase que se enc
     {
         $note = Note::findOrFail($id); //con esto me aseguro de obtener la nota o lanzar un error 404 evitando el uso de abort_if
         /*dd($note); //sirve para hacer debug y ver el contenido de la variable*/
-        return 'Editar nota: ' . $note->title;
+        return view('notes.edit', ['note' => $note]); //arreglo asociativo para pasar la nota a la vista 'notes.edit'
     }
+
+    public function update(Request $request, $id)
+    {
+        dd("Updating: $id");
+    }
+
 }
