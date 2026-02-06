@@ -9,11 +9,25 @@
                 <div class="card-body">
                     <h1>Nueva nota</h1>
 
+                    @if ($errors->any())
+                        <div class="errors">
+                            <p><strong>El formulario contiene errores, por favor corrigelos e intenta
+                                    nuevamente:</strong></p>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+
+                        </div>
+                    @endif
+
                     <form action=" {{ route('notes.store') }}" method="POST">
                         <!-- route('notes.store') es una funcion de laravel que genera la url de la ruta notes.store definida en web.php -->
                         @csrf
 
-                        <label for="title" class="field-label">Título: </label>
+                        <label for="title" class="field-label">@lang('validation.attributes.title'):</label>
+                        <!-- aqui se usa la funcion lang con esa sintaxis de blade para poder hacer referencia al lenguaje deseado -->
                         <input type="text" name="title" id="title" value="{{ old('title') }}"
                             class="field-input @error('title') field-error @enderror">
                         <!-- aqui se agrega una clase condicional field-error si hay un error de validacion en el campo title -->
