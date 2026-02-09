@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{{ $title ?? 'App de notas' }}</title>
+    <title>{{ $title ?? 'App de notas' }}</title> <!-- con esto se define un titulo dinamico que se puede pasar desde la plantilla que use este layout, si no se pasa nada entonces se muestra el titulo por defecto -->
     <link rel="stylesheet" type="text/css" href= "{{ asset('css/app.css') }}">  
     <!-- Ruta relativa al archivo CSS en caso de que falle, por eso se ponen los ../ en caso de que se agregue un tercer archivo a la ruta pues entonces solo deja con / o sea a partir del dominio -->
     <meta name="viewport" content="width=device-width, initial-scale=1">

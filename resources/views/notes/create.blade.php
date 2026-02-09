@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout> <!-- con esto se esta usando el componente layout que es el que contiene la estructura principal de la aplicacion, y dentro del componente se define un espacio con slot que es donde se va a insertar el contenido de este archivo. -->
 
     <x-slot:title>Nueva nota</x-slot:title>
     <!-- con esto se define el contenido de la variable title que se usa en el componente layout para el titulo de la pagina -->
@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <h1>Nueva nota</h1>
 
-                    @if ($errors->any())
+                    @if ($errors->any()) 
                         <div class="errors">
                             <p><strong>El formulario contiene errores, por favor corrigelos e intenta
                                     nuevamente:</strong></p>

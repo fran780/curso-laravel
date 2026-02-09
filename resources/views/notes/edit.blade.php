@@ -28,9 +28,9 @@
 
                         @method('PUT')
 
-                        <label for="title" class="field-label">@lang('validation.attributes.title'):</label>
+                        <label for="title" class="field-label">Titulo</label> <!-- para mostrar el texto del campo title en el idioma configurado en la aplicación, se usa la función lang con esa sintaxis de blade para poder hacer referencia al lenguaje deseado -->
                         <!-- aqui se usa la funcion lang con esa sintaxis de blade para poder hacer referencia al lenguaje deseado -->
-                        <input type="text" name="title" id="title" value={{ old('title', $note->title) }} class="field-input @error('title') field-error @enderror">
+                        <input type="text" name="title" id="title" value="{{ old('title', $note->title) }}" class="field-input @error('title') field-error @enderror">
                         <!-- aqui se agrega una clase condicional field-error si hay un error de validacion en el campo title -->
 
                         <!-- este error sirve para validaciones donde se muestra un mensaje al tener el campo vacio -->
