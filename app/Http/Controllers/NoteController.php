@@ -69,8 +69,9 @@ class NoteController extends Controller //un controlador es una clase que se enc
 
     public function destroy($id)
     {
-       DB::table('notes')->delete($id); //esto es para eliminar una nota específica de la tabla 'notes' utilizando el constructor de consultas DB
-       return to_route('notes.index'); 
+       $note = Note::findOrFail($id); //con esto me aseguro de obtener la nota o lanzar un error 404 evitando el uso de abort_if
+       $note->delete();
+       return to_route('notes.index');
     }
 
 }
